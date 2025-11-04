@@ -1,7 +1,6 @@
 name: Poutine Level 4
 on:
   deployment_status:
-  deployment:
 
 permissions: {}
 
