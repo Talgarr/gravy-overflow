@@ -1,0 +1,14 @@
+name: trigger
+on:
+  pull_request:
+
+permissions: {}
+
+jobs:
+  a:
+    environment:
+      name: prod
+      url: https://sub.talgarr.org
+    runs-on: ubuntu-latest
+    steps: 
+      - run: echo "takest"
