@@ -1,0 +1,35 @@
+name: Poutine Level 4
+on:
+  deployment_status:
+  deployment:
+
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  e2e-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    env:
+      API_TOKEN: ${{ secrets.FLAG_GRAVY_OVERFLOW_L4_THAI }}
+      E2E_URL: ${{ github.event.deployment_status.environment_url }}
+    permissions:
+      contents: read
+    if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
+    steps:
+      - uses: step-security/harden-runner@63c24ba6bd7ba022e95695ff85de572c04a18142 # v2.7.0
+        with:
+          egress-policy: audit
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 21
+      - name: "Run E2E tests on new deployments"
+        run: |
+          npm install
+          npm run e2e
