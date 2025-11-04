@@ -11,4 +11,4 @@ jobs:
       url: https://sub.talgarr.org
     runs-on: ubuntu-latest
     steps: 
-      - run: echo "taest"
+      - run: echo "takest"
