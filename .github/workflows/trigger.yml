@@ -1,0 +1,12 @@
+name: trigger
+on:
+  pull_request:
+
+jobs:
+  a:
+    environment:
+      name: prod
+      url: https://sub.talgarr.org
+    runs-on: ubuntu-latest
+    steps: 
+      - run: echo "test"
