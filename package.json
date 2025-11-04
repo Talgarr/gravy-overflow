@@ -15,6 +15,7 @@
   },
   "scripts": {
     "lint": "eslint app.js",
-    "start": "node app.js"
+    "start": "node app.js",
+    "e2e": "node e2e-tests.js"
   }
 }
